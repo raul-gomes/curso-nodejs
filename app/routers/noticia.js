@@ -1,11 +1,11 @@
-module.exports = function(app){
+module.exports = function(application){
     
-    app.get('/noticia', function(req, res) {
+    application.get('/noticia', function(req, res) {
 
-        var conection = app.config.dbConnection()
-        var noticiaModel = app.app.models.noticiasModel
+        var conection = application.config.dbConnection()
+        var noticiaModel = new application.app.models.NoticiasDAO(conection)
 
-        noticiaModel.getNoticia(conection, function(erro, result){
+        noticiaModel.getNoticia(function(erro, result){
             res.render('noticias/noticia', {noticia: result});
 
         })
