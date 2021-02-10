@@ -1,6 +1,6 @@
 var express = require('express');
 var consign = require('consign');
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
 
 var app = express();
 
@@ -13,7 +13,7 @@ consign()
     .include('app/routers')
     .then('config/dbConnection.js')
     .then('app/models')
+    .then('app/controllers')
     .into(app);
-
 
 module.exports = app;
